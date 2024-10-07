@@ -1,8 +1,0 @@
-syntax = "proto3";
-option java_outer_classname = "GreetingWrapper";
-
-message Greeting {
-  string msg = 1;
-  string name = 2;
-  int32 age = 3;
-}

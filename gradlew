@@ -227,7 +227,7 @@ fi
 #
 # With -n1 it outputs one arg per line, with the quotes and backslashes removed.
 #
-# In Bash we could simply go:
+# In Bash we could simply go_proto:
 #
 #   readarray ARGS < <( xargs -n1 <<<"$var" ) &&
 #   set -- "${ARGS[@]}" "$@"

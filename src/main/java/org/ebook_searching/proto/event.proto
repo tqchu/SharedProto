@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package org.ebook_searching.proto;
+option go_package = "org/ebook_searching/proto";
+import "google/protobuf/timestamp.proto";
+
+// Book Ingestion Event message definition
+message AddBookEvent {
+
+  // The ID of the book
+  int64 id = 1;
+
+  // The title of the book
+  string title = 2;
+
+  // The genre of the book
+  string genre = 3;
+
+  // The date the book was published
+  google.protobuf.Timestamp published_at = 4;
+
+  // The publisher of the book
+  string publisher = 5;
+
+  // The language of the book
+  string language = 6;
+
+  // The average ratings of the book
+  double avg_ratings = 7;
+
+  // The count of the ratings
+  int64 ratings_count = 8;
+
+  // The IDs of the authors
+  repeated int64 author_ids = 9;
+}
