@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package org.ebook_searching.proto;
-option go_package = "org/ebook_searching/proto";
+option go_package = "github.com/tqchu/SharedProto";
 import "google/protobuf/timestamp.proto";
 
 // Book Ingestion Event message definition
