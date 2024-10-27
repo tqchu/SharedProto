@@ -50,23 +50,44 @@ public final class Event {
 
     /**
      * <pre>
-     * The genre of the book
+     * List of genres of the book
      * </pre>
      *
-     * <code>string genre = 3;</code>
-     * @return The genre.
+     * <code>repeated string genres = 3;</code>
+     * @return A list containing the genres.
      */
-    java.lang.String getGenre();
+    java.util.List<java.lang.String>
+        getGenresList();
     /**
      * <pre>
-     * The genre of the book
+     * List of genres of the book
      * </pre>
      *
-     * <code>string genre = 3;</code>
-     * @return The bytes for genre.
+     * <code>repeated string genres = 3;</code>
+     * @return The count of genres.
+     */
+    int getGenresCount();
+    /**
+     * <pre>
+     * List of genres of the book
+     * </pre>
+     *
+     * <code>repeated string genres = 3;</code>
+     * @param index The index of the element to return.
+     * @return The genres at the given index.
+     */
+    java.lang.String getGenres(int index);
+    /**
+     * <pre>
+     * List of genres of the book
+     * </pre>
+     *
+     * <code>repeated string genres = 3;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the genres at the given index.
      */
     com.google.protobuf.ByteString
-        getGenreBytes();
+        getGenresBytes(int index);
 
     /**
      * <pre>
@@ -117,10 +138,61 @@ public final class Event {
 
     /**
      * <pre>
+     * Total pages in the book
+     * </pre>
+     *
+     * <code>int32 total_pages = 6;</code>
+     * @return The totalPages.
+     */
+    int getTotalPages();
+
+    /**
+     * <pre>
+     * List of categories the book belongs to
+     * </pre>
+     *
+     * <code>repeated string categories = 7;</code>
+     * @return A list containing the categories.
+     */
+    java.util.List<java.lang.String>
+        getCategoriesList();
+    /**
+     * <pre>
+     * List of categories the book belongs to
+     * </pre>
+     *
+     * <code>repeated string categories = 7;</code>
+     * @return The count of categories.
+     */
+    int getCategoriesCount();
+    /**
+     * <pre>
+     * List of categories the book belongs to
+     * </pre>
+     *
+     * <code>repeated string categories = 7;</code>
+     * @param index The index of the element to return.
+     * @return The categories at the given index.
+     */
+    java.lang.String getCategories(int index);
+    /**
+     * <pre>
+     * List of categories the book belongs to
+     * </pre>
+     *
+     * <code>repeated string categories = 7;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the categories at the given index.
+     */
+    com.google.protobuf.ByteString
+        getCategoriesBytes(int index);
+
+    /**
+     * <pre>
      * The language of the book
      * </pre>
      *
-     * <code>string language = 6;</code>
+     * <code>string language = 8;</code>
      * @return The language.
      */
     java.lang.String getLanguage();
@@ -129,7 +201,7 @@ public final class Event {
      * The language of the book
      * </pre>
      *
-     * <code>string language = 6;</code>
+     * <code>string language = 8;</code>
      * @return The bytes for language.
      */
     com.google.protobuf.ByteString
@@ -137,48 +209,68 @@ public final class Event {
 
     /**
      * <pre>
-     * The average ratings of the book
+     * The description of the book
      * </pre>
      *
-     * <code>double avg_ratings = 7;</code>
-     * @return The avgRatings.
+     * <code>string description = 9;</code>
+     * @return The description.
      */
-    double getAvgRatings();
+    java.lang.String getDescription();
+    /**
+     * <pre>
+     * The description of the book
+     * </pre>
+     *
+     * <code>string description = 9;</code>
+     * @return The bytes for description.
+     */
+    com.google.protobuf.ByteString
+        getDescriptionBytes();
 
     /**
      * <pre>
-     * The count of the ratings
+     * The image of the book (Base64 or URL)
      * </pre>
      *
-     * <code>int64 ratings_count = 8;</code>
-     * @return The ratingsCount.
+     * <code>string image = 10;</code>
+     * @return The image.
      */
-    long getRatingsCount();
+    java.lang.String getImage();
+    /**
+     * <pre>
+     * The image of the book (Base64 or URL)
+     * </pre>
+     *
+     * <code>string image = 10;</code>
+     * @return The bytes for image.
+     */
+    com.google.protobuf.ByteString
+        getImageBytes();
 
     /**
      * <pre>
-     * The IDs of the authors
+     * List of author details
      * </pre>
      *
-     * <code>repeated int64 author_ids = 9;</code>
+     * <code>repeated int64 authorIds = 11;</code>
      * @return A list containing the authorIds.
      */
     java.util.List<java.lang.Long> getAuthorIdsList();
     /**
      * <pre>
-     * The IDs of the authors
+     * List of author details
      * </pre>
      *
-     * <code>repeated int64 author_ids = 9;</code>
+     * <code>repeated int64 authorIds = 11;</code>
      * @return The count of authorIds.
      */
     int getAuthorIdsCount();
     /**
      * <pre>
-     * The IDs of the authors
+     * List of author details
      * </pre>
      *
-     * <code>repeated int64 author_ids = 9;</code>
+     * <code>repeated int64 authorIds = 11;</code>
      * @param index The index of the element to return.
      * @return The authorIds at the given index.
      */
@@ -202,9 +294,12 @@ public final class Event {
     }
     private AddBookEvent() {
       title_ = "";
-      genre_ = "";
+      genres_ = com.google.protobuf.LazyStringArrayList.EMPTY;
       publisher_ = "";
+      categories_ = com.google.protobuf.LazyStringArrayList.EMPTY;
       language_ = "";
+      description_ = "";
+      image_ = "";
       authorIds_ = emptyLongList();
     }
 
@@ -252,8 +347,11 @@ public final class Event {
             }
             case 26: {
               java.lang.String s = input.readStringRequireUtf8();
-
-              genre_ = s;
+              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+                genres_ = new com.google.protobuf.LazyStringArrayList();
+                mutable_bitField0_ |= 0x00000001;
+              }
+              genres_.add(s);
               break;
             }
             case 34: {
@@ -275,36 +373,52 @@ public final class Event {
               publisher_ = s;
               break;
             }
-            case 50: {
+            case 48: {
+
+              totalPages_ = input.readInt32();
+              break;
+            }
+            case 58: {
+              java.lang.String s = input.readStringRequireUtf8();
+              if (!((mutable_bitField0_ & 0x00000002) != 0)) {
+                categories_ = new com.google.protobuf.LazyStringArrayList();
+                mutable_bitField0_ |= 0x00000002;
+              }
+              categories_.add(s);
+              break;
+            }
+            case 66: {
               java.lang.String s = input.readStringRequireUtf8();
 
               language_ = s;
               break;
             }
-            case 57: {
+            case 74: {
+              java.lang.String s = input.readStringRequireUtf8();
 
-              avgRatings_ = input.readDouble();
+              description_ = s;
               break;
             }
-            case 64: {
+            case 82: {
+              java.lang.String s = input.readStringRequireUtf8();
 
-              ratingsCount_ = input.readInt64();
+              image_ = s;
               break;
             }
-            case 72: {
-              if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+            case 88: {
+              if (!((mutable_bitField0_ & 0x00000004) != 0)) {
                 authorIds_ = newLongList();
-                mutable_bitField0_ |= 0x00000001;
+                mutable_bitField0_ |= 0x00000004;
               }
               authorIds_.addLong(input.readInt64());
               break;
             }
-            case 74: {
+            case 90: {
               int length = input.readRawVarint32();
               int limit = input.pushLimit(length);
-              if (!((mutable_bitField0_ & 0x00000001) != 0) && input.getBytesUntilLimit() > 0) {
+              if (!((mutable_bitField0_ & 0x00000004) != 0) && input.getBytesUntilLimit() > 0) {
                 authorIds_ = newLongList();
-                mutable_bitField0_ |= 0x00000001;
+                mutable_bitField0_ |= 0x00000004;
               }
               while (input.getBytesUntilLimit() > 0) {
                 authorIds_.addLong(input.readInt64());
@@ -328,6 +442,12 @@ public final class Event {
             e).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000001) != 0)) {
+          genres_ = genres_.getUnmodifiableView();
+        }
+        if (((mutable_bitField0_ & 0x00000002) != 0)) {
+          categories_ = categories_.getUnmodifiableView();
+        }
+        if (((mutable_bitField0_ & 0x00000004) != 0)) {
           authorIds_.makeImmutable(); // C
         }
         this.unknownFields = unknownFields.build();
@@ -408,50 +528,55 @@ public final class Event {
       }
     }
 
-    public static final int GENRE_FIELD_NUMBER = 3;
-    private volatile java.lang.Object genre_;
+    public static final int GENRES_FIELD_NUMBER = 3;
+    private com.google.protobuf.LazyStringList genres_;
     /**
      * <pre>
-     * The genre of the book
+     * List of genres of the book
      * </pre>
      *
-     * <code>string genre = 3;</code>
-     * @return The genre.
+     * <code>repeated string genres = 3;</code>
+     * @return A list containing the genres.
      */
-    @java.lang.Override
-    public java.lang.String getGenre() {
-      java.lang.Object ref = genre_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        genre_ = s;
-        return s;
-      }
+    public com.google.protobuf.ProtocolStringList
+        getGenresList() {
+      return genres_;
     }
     /**
      * <pre>
-     * The genre of the book
+     * List of genres of the book
      * </pre>
      *
-     * <code>string genre = 3;</code>
-     * @return The bytes for genre.
+     * <code>repeated string genres = 3;</code>
+     * @return The count of genres.
      */
-    @java.lang.Override
+    public int getGenresCount() {
+      return genres_.size();
+    }
+    /**
+     * <pre>
+     * List of genres of the book
+     * </pre>
+     *
+     * <code>repeated string genres = 3;</code>
+     * @param index The index of the element to return.
+     * @return The genres at the given index.
+     */
+    public java.lang.String getGenres(int index) {
+      return genres_.get(index);
+    }
+    /**
+     * <pre>
+     * List of genres of the book
+     * </pre>
+     *
+     * <code>repeated string genres = 3;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the genres at the given index.
+     */
     public com.google.protobuf.ByteString
-        getGenreBytes() {
-      java.lang.Object ref = genre_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        genre_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+        getGenresBytes(int index) {
+      return genres_.getByteString(index);
     }
 
     public static final int PUBLISHED_AT_FIELD_NUMBER = 4;
@@ -538,14 +663,80 @@ public final class Event {
       }
     }
 
-    public static final int LANGUAGE_FIELD_NUMBER = 6;
+    public static final int TOTAL_PAGES_FIELD_NUMBER = 6;
+    private int totalPages_;
+    /**
+     * <pre>
+     * Total pages in the book
+     * </pre>
+     *
+     * <code>int32 total_pages = 6;</code>
+     * @return The totalPages.
+     */
+    @java.lang.Override
+    public int getTotalPages() {
+      return totalPages_;
+    }
+
+    public static final int CATEGORIES_FIELD_NUMBER = 7;
+    private com.google.protobuf.LazyStringList categories_;
+    /**
+     * <pre>
+     * List of categories the book belongs to
+     * </pre>
+     *
+     * <code>repeated string categories = 7;</code>
+     * @return A list containing the categories.
+     */
+    public com.google.protobuf.ProtocolStringList
+        getCategoriesList() {
+      return categories_;
+    }
+    /**
+     * <pre>
+     * List of categories the book belongs to
+     * </pre>
+     *
+     * <code>repeated string categories = 7;</code>
+     * @return The count of categories.
+     */
+    public int getCategoriesCount() {
+      return categories_.size();
+    }
+    /**
+     * <pre>
+     * List of categories the book belongs to
+     * </pre>
+     *
+     * <code>repeated string categories = 7;</code>
+     * @param index The index of the element to return.
+     * @return The categories at the given index.
+     */
+    public java.lang.String getCategories(int index) {
+      return categories_.get(index);
+    }
+    /**
+     * <pre>
+     * List of categories the book belongs to
+     * </pre>
+     *
+     * <code>repeated string categories = 7;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the categories at the given index.
+     */
+    public com.google.protobuf.ByteString
+        getCategoriesBytes(int index) {
+      return categories_.getByteString(index);
+    }
+
+    public static final int LANGUAGE_FIELD_NUMBER = 8;
     private volatile java.lang.Object language_;
     /**
      * <pre>
      * The language of the book
      * </pre>
      *
-     * <code>string language = 6;</code>
+     * <code>string language = 8;</code>
      * @return The language.
      */
     @java.lang.Override
@@ -566,7 +757,7 @@ public final class Event {
      * The language of the book
      * </pre>
      *
-     * <code>string language = 6;</code>
+     * <code>string language = 8;</code>
      * @return The bytes for language.
      */
     @java.lang.Override
@@ -584,44 +775,106 @@ public final class Event {
       }
     }
 
-    public static final int AVG_RATINGS_FIELD_NUMBER = 7;
-    private double avgRatings_;
+    public static final int DESCRIPTION_FIELD_NUMBER = 9;
+    private volatile java.lang.Object description_;
     /**
      * <pre>
-     * The average ratings of the book
+     * The description of the book
      * </pre>
      *
-     * <code>double avg_ratings = 7;</code>
-     * @return The avgRatings.
+     * <code>string description = 9;</code>
+     * @return The description.
      */
     @java.lang.Override
-    public double getAvgRatings() {
-      return avgRatings_;
+    public java.lang.String getDescription() {
+      java.lang.Object ref = description_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        description_ = s;
+        return s;
+      }
     }
-
-    public static final int RATINGS_COUNT_FIELD_NUMBER = 8;
-    private long ratingsCount_;
     /**
      * <pre>
-     * The count of the ratings
+     * The description of the book
      * </pre>
      *
-     * <code>int64 ratings_count = 8;</code>
-     * @return The ratingsCount.
+     * <code>string description = 9;</code>
+     * @return The bytes for description.
      */
     @java.lang.Override
-    public long getRatingsCount() {
-      return ratingsCount_;
+    public com.google.protobuf.ByteString
+        getDescriptionBytes() {
+      java.lang.Object ref = description_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        description_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
-    public static final int AUTHOR_IDS_FIELD_NUMBER = 9;
+    public static final int IMAGE_FIELD_NUMBER = 10;
+    private volatile java.lang.Object image_;
+    /**
+     * <pre>
+     * The image of the book (Base64 or URL)
+     * </pre>
+     *
+     * <code>string image = 10;</code>
+     * @return The image.
+     */
+    @java.lang.Override
+    public java.lang.String getImage() {
+      java.lang.Object ref = image_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        image_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * The image of the book (Base64 or URL)
+     * </pre>
+     *
+     * <code>string image = 10;</code>
+     * @return The bytes for image.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getImageBytes() {
+      java.lang.Object ref = image_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        image_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int AUTHORIDS_FIELD_NUMBER = 11;
     private com.google.protobuf.Internal.LongList authorIds_;
     /**
      * <pre>
-     * The IDs of the authors
+     * List of author details
      * </pre>
      *
-     * <code>repeated int64 author_ids = 9;</code>
+     * <code>repeated int64 authorIds = 11;</code>
      * @return A list containing the authorIds.
      */
     @java.lang.Override
@@ -631,10 +884,10 @@ public final class Event {
     }
     /**
      * <pre>
-     * The IDs of the authors
+     * List of author details
      * </pre>
      *
-     * <code>repeated int64 author_ids = 9;</code>
+     * <code>repeated int64 authorIds = 11;</code>
      * @return The count of authorIds.
      */
     public int getAuthorIdsCount() {
@@ -642,10 +895,10 @@ public final class Event {
     }
     /**
      * <pre>
-     * The IDs of the authors
+     * List of author details
      * </pre>
      *
-     * <code>repeated int64 author_ids = 9;</code>
+     * <code>repeated int64 authorIds = 11;</code>
      * @param index The index of the element to return.
      * @return The authorIds at the given index.
      */
@@ -675,8 +928,8 @@ public final class Event {
       if (!getTitleBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, title_);
       }
-      if (!getGenreBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, genre_);
+      for (int i = 0; i < genres_.size(); i++) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, genres_.getRaw(i));
       }
       if (publishedAt_ != null) {
         output.writeMessage(4, getPublishedAt());
@@ -684,17 +937,23 @@ public final class Event {
       if (!getPublisherBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 5, publisher_);
       }
+      if (totalPages_ != 0) {
+        output.writeInt32(6, totalPages_);
+      }
+      for (int i = 0; i < categories_.size(); i++) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 7, categories_.getRaw(i));
+      }
       if (!getLanguageBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 6, language_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 8, language_);
       }
-      if (avgRatings_ != 0D) {
-        output.writeDouble(7, avgRatings_);
+      if (!getDescriptionBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 9, description_);
       }
-      if (ratingsCount_ != 0L) {
-        output.writeInt64(8, ratingsCount_);
+      if (!getImageBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 10, image_);
       }
       if (getAuthorIdsList().size() > 0) {
-        output.writeUInt32NoTag(74);
+        output.writeUInt32NoTag(90);
         output.writeUInt32NoTag(authorIdsMemoizedSerializedSize);
       }
       for (int i = 0; i < authorIds_.size(); i++) {
@@ -716,8 +975,13 @@ public final class Event {
       if (!getTitleBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, title_);
       }
-      if (!getGenreBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, genre_);
+      {
+        int dataSize = 0;
+        for (int i = 0; i < genres_.size(); i++) {
+          dataSize += computeStringSizeNoTag(genres_.getRaw(i));
+        }
+        size += dataSize;
+        size += 1 * getGenresList().size();
       }
       if (publishedAt_ != null) {
         size += com.google.protobuf.CodedOutputStream
@@ -726,16 +990,26 @@ public final class Event {
       if (!getPublisherBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, publisher_);
       }
+      if (totalPages_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(6, totalPages_);
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < categories_.size(); i++) {
+          dataSize += computeStringSizeNoTag(categories_.getRaw(i));
+        }
+        size += dataSize;
+        size += 1 * getCategoriesList().size();
+      }
       if (!getLanguageBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, language_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, language_);
       }
-      if (avgRatings_ != 0D) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(7, avgRatings_);
+      if (!getDescriptionBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(9, description_);
       }
-      if (ratingsCount_ != 0L) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(8, ratingsCount_);
+      if (!getImageBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, image_);
       }
       {
         int dataSize = 0;
@@ -770,8 +1044,8 @@ public final class Event {
           != other.getId()) return false;
       if (!getTitle()
           .equals(other.getTitle())) return false;
-      if (!getGenre()
-          .equals(other.getGenre())) return false;
+      if (!getGenresList()
+          .equals(other.getGenresList())) return false;
       if (hasPublishedAt() != other.hasPublishedAt()) return false;
       if (hasPublishedAt()) {
         if (!getPublishedAt()
@@ -779,13 +1053,16 @@ public final class Event {
       }
       if (!getPublisher()
           .equals(other.getPublisher())) return false;
+      if (getTotalPages()
+          != other.getTotalPages()) return false;
+      if (!getCategoriesList()
+          .equals(other.getCategoriesList())) return false;
       if (!getLanguage()
           .equals(other.getLanguage())) return false;
-      if (java.lang.Double.doubleToLongBits(getAvgRatings())
-          != java.lang.Double.doubleToLongBits(
-              other.getAvgRatings())) return false;
-      if (getRatingsCount()
-          != other.getRatingsCount()) return false;
+      if (!getDescription()
+          .equals(other.getDescription())) return false;
+      if (!getImage()
+          .equals(other.getImage())) return false;
       if (!getAuthorIdsList()
           .equals(other.getAuthorIdsList())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
@@ -804,24 +1081,30 @@ public final class Event {
           getId());
       hash = (37 * hash) + TITLE_FIELD_NUMBER;
       hash = (53 * hash) + getTitle().hashCode();
-      hash = (37 * hash) + GENRE_FIELD_NUMBER;
-      hash = (53 * hash) + getGenre().hashCode();
+      if (getGenresCount() > 0) {
+        hash = (37 * hash) + GENRES_FIELD_NUMBER;
+        hash = (53 * hash) + getGenresList().hashCode();
+      }
       if (hasPublishedAt()) {
         hash = (37 * hash) + PUBLISHED_AT_FIELD_NUMBER;
         hash = (53 * hash) + getPublishedAt().hashCode();
       }
       hash = (37 * hash) + PUBLISHER_FIELD_NUMBER;
       hash = (53 * hash) + getPublisher().hashCode();
+      hash = (37 * hash) + TOTAL_PAGES_FIELD_NUMBER;
+      hash = (53 * hash) + getTotalPages();
+      if (getCategoriesCount() > 0) {
+        hash = (37 * hash) + CATEGORIES_FIELD_NUMBER;
+        hash = (53 * hash) + getCategoriesList().hashCode();
+      }
       hash = (37 * hash) + LANGUAGE_FIELD_NUMBER;
       hash = (53 * hash) + getLanguage().hashCode();
-      hash = (37 * hash) + AVG_RATINGS_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          java.lang.Double.doubleToLongBits(getAvgRatings()));
-      hash = (37 * hash) + RATINGS_COUNT_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getRatingsCount());
+      hash = (37 * hash) + DESCRIPTION_FIELD_NUMBER;
+      hash = (53 * hash) + getDescription().hashCode();
+      hash = (37 * hash) + IMAGE_FIELD_NUMBER;
+      hash = (53 * hash) + getImage().hashCode();
       if (getAuthorIdsCount() > 0) {
-        hash = (37 * hash) + AUTHOR_IDS_FIELD_NUMBER;
+        hash = (37 * hash) + AUTHORIDS_FIELD_NUMBER;
         hash = (53 * hash) + getAuthorIdsList().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
@@ -965,8 +1248,8 @@ public final class Event {
 
         title_ = "";
 
-        genre_ = "";
-
+        genres_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000001);
         if (publishedAtBuilder_ == null) {
           publishedAt_ = null;
         } else {
@@ -975,14 +1258,18 @@ public final class Event {
         }
         publisher_ = "";
 
+        totalPages_ = 0;
+
+        categories_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000002);
         language_ = "";
 
-        avgRatings_ = 0D;
+        description_ = "";
 
-        ratingsCount_ = 0L;
+        image_ = "";
 
         authorIds_ = emptyLongList();
-        bitField0_ = (bitField0_ & ~0x00000001);
+        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
 
@@ -1012,19 +1299,29 @@ public final class Event {
         int from_bitField0_ = bitField0_;
         result.id_ = id_;
         result.title_ = title_;
-        result.genre_ = genre_;
+        if (((bitField0_ & 0x00000001) != 0)) {
+          genres_ = genres_.getUnmodifiableView();
+          bitField0_ = (bitField0_ & ~0x00000001);
+        }
+        result.genres_ = genres_;
         if (publishedAtBuilder_ == null) {
           result.publishedAt_ = publishedAt_;
         } else {
           result.publishedAt_ = publishedAtBuilder_.build();
         }
         result.publisher_ = publisher_;
+        result.totalPages_ = totalPages_;
+        if (((bitField0_ & 0x00000002) != 0)) {
+          categories_ = categories_.getUnmodifiableView();
+          bitField0_ = (bitField0_ & ~0x00000002);
+        }
+        result.categories_ = categories_;
         result.language_ = language_;
-        result.avgRatings_ = avgRatings_;
-        result.ratingsCount_ = ratingsCount_;
-        if (((bitField0_ & 0x00000001) != 0)) {
+        result.description_ = description_;
+        result.image_ = image_;
+        if (((bitField0_ & 0x00000004) != 0)) {
           authorIds_.makeImmutable();
-          bitField0_ = (bitField0_ & ~0x00000001);
+          bitField0_ = (bitField0_ & ~0x00000004);
         }
         result.authorIds_ = authorIds_;
         onBuilt();
@@ -1082,8 +1379,14 @@ public final class Event {
           title_ = other.title_;
           onChanged();
         }
-        if (!other.getGenre().isEmpty()) {
-          genre_ = other.genre_;
+        if (!other.genres_.isEmpty()) {
+          if (genres_.isEmpty()) {
+            genres_ = other.genres_;
+            bitField0_ = (bitField0_ & ~0x00000001);
+          } else {
+            ensureGenresIsMutable();
+            genres_.addAll(other.genres_);
+          }
           onChanged();
         }
         if (other.hasPublishedAt()) {
@@ -1093,20 +1396,35 @@ public final class Event {
           publisher_ = other.publisher_;
           onChanged();
         }
+        if (other.getTotalPages() != 0) {
+          setTotalPages(other.getTotalPages());
+        }
+        if (!other.categories_.isEmpty()) {
+          if (categories_.isEmpty()) {
+            categories_ = other.categories_;
+            bitField0_ = (bitField0_ & ~0x00000002);
+          } else {
+            ensureCategoriesIsMutable();
+            categories_.addAll(other.categories_);
+          }
+          onChanged();
+        }
         if (!other.getLanguage().isEmpty()) {
           language_ = other.language_;
           onChanged();
         }
-        if (other.getAvgRatings() != 0D) {
-          setAvgRatings(other.getAvgRatings());
+        if (!other.getDescription().isEmpty()) {
+          description_ = other.description_;
+          onChanged();
         }
-        if (other.getRatingsCount() != 0L) {
-          setRatingsCount(other.getRatingsCount());
+        if (!other.getImage().isEmpty()) {
+          image_ = other.image_;
+          onChanged();
         }
         if (!other.authorIds_.isEmpty()) {
           if (authorIds_.isEmpty()) {
             authorIds_ = other.authorIds_;
-            bitField0_ = (bitField0_ & ~0x00000001);
+            bitField0_ = (bitField0_ & ~0x00000004);
           } else {
             ensureAuthorIdsIsMutable();
             authorIds_.addAll(other.authorIds_);
@@ -1282,98 +1600,148 @@ public final class Event {
         return this;
       }
 
-      private java.lang.Object genre_ = "";
-      /**
-       * <pre>
-       * The genre of the book
-       * </pre>
-       *
-       * <code>string genre = 3;</code>
-       * @return The genre.
-       */
-      public java.lang.String getGenre() {
-        java.lang.Object ref = genre_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          genre_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
+      private com.google.protobuf.LazyStringList genres_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      private void ensureGenresIsMutable() {
+        if (!((bitField0_ & 0x00000001) != 0)) {
+          genres_ = new com.google.protobuf.LazyStringArrayList(genres_);
+          bitField0_ |= 0x00000001;
+         }
       }
       /**
        * <pre>
-       * The genre of the book
+       * List of genres of the book
        * </pre>
        *
-       * <code>string genre = 3;</code>
-       * @return The bytes for genre.
+       * <code>repeated string genres = 3;</code>
+       * @return A list containing the genres.
+       */
+      public com.google.protobuf.ProtocolStringList
+          getGenresList() {
+        return genres_.getUnmodifiableView();
+      }
+      /**
+       * <pre>
+       * List of genres of the book
+       * </pre>
+       *
+       * <code>repeated string genres = 3;</code>
+       * @return The count of genres.
+       */
+      public int getGenresCount() {
+        return genres_.size();
+      }
+      /**
+       * <pre>
+       * List of genres of the book
+       * </pre>
+       *
+       * <code>repeated string genres = 3;</code>
+       * @param index The index of the element to return.
+       * @return The genres at the given index.
+       */
+      public java.lang.String getGenres(int index) {
+        return genres_.get(index);
+      }
+      /**
+       * <pre>
+       * List of genres of the book
+       * </pre>
+       *
+       * <code>repeated string genres = 3;</code>
+       * @param index The index of the value to return.
+       * @return The bytes of the genres at the given index.
        */
       public com.google.protobuf.ByteString
-          getGenreBytes() {
-        java.lang.Object ref = genre_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          genre_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
+          getGenresBytes(int index) {
+        return genres_.getByteString(index);
       }
       /**
        * <pre>
-       * The genre of the book
+       * List of genres of the book
        * </pre>
        *
-       * <code>string genre = 3;</code>
-       * @param value The genre to set.
+       * <code>repeated string genres = 3;</code>
+       * @param index The index to set the value at.
+       * @param value The genres to set.
        * @return This builder for chaining.
        */
-      public Builder setGenre(
+      public Builder setGenres(
+          int index, java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureGenresIsMutable();
+        genres_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * List of genres of the book
+       * </pre>
+       *
+       * <code>repeated string genres = 3;</code>
+       * @param value The genres to add.
+       * @return This builder for chaining.
+       */
+      public Builder addGenres(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  
-        genre_ = value;
+  ensureGenresIsMutable();
+        genres_.add(value);
         onChanged();
         return this;
       }
       /**
        * <pre>
-       * The genre of the book
+       * List of genres of the book
        * </pre>
        *
-       * <code>string genre = 3;</code>
+       * <code>repeated string genres = 3;</code>
+       * @param values The genres to add.
        * @return This builder for chaining.
        */
-      public Builder clearGenre() {
-        
-        genre_ = getDefaultInstance().getGenre();
+      public Builder addAllGenres(
+          java.lang.Iterable<java.lang.String> values) {
+        ensureGenresIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, genres_);
         onChanged();
         return this;
       }
       /**
        * <pre>
-       * The genre of the book
+       * List of genres of the book
        * </pre>
        *
-       * <code>string genre = 3;</code>
-       * @param value The bytes for genre to set.
+       * <code>repeated string genres = 3;</code>
        * @return This builder for chaining.
        */
-      public Builder setGenreBytes(
+      public Builder clearGenres() {
+        genres_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * List of genres of the book
+       * </pre>
+       *
+       * <code>repeated string genres = 3;</code>
+       * @param value The bytes of the genres to add.
+       * @return This builder for chaining.
+       */
+      public Builder addGenresBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-        
-        genre_ = value;
+        ensureGenresIsMutable();
+        genres_.add(value);
         onChanged();
         return this;
       }
@@ -1629,13 +1997,202 @@ public final class Event {
         return this;
       }
 
+      private int totalPages_ ;
+      /**
+       * <pre>
+       * Total pages in the book
+       * </pre>
+       *
+       * <code>int32 total_pages = 6;</code>
+       * @return The totalPages.
+       */
+      @java.lang.Override
+      public int getTotalPages() {
+        return totalPages_;
+      }
+      /**
+       * <pre>
+       * Total pages in the book
+       * </pre>
+       *
+       * <code>int32 total_pages = 6;</code>
+       * @param value The totalPages to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTotalPages(int value) {
+        
+        totalPages_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Total pages in the book
+       * </pre>
+       *
+       * <code>int32 total_pages = 6;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTotalPages() {
+        
+        totalPages_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.LazyStringList categories_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      private void ensureCategoriesIsMutable() {
+        if (!((bitField0_ & 0x00000002) != 0)) {
+          categories_ = new com.google.protobuf.LazyStringArrayList(categories_);
+          bitField0_ |= 0x00000002;
+         }
+      }
+      /**
+       * <pre>
+       * List of categories the book belongs to
+       * </pre>
+       *
+       * <code>repeated string categories = 7;</code>
+       * @return A list containing the categories.
+       */
+      public com.google.protobuf.ProtocolStringList
+          getCategoriesList() {
+        return categories_.getUnmodifiableView();
+      }
+      /**
+       * <pre>
+       * List of categories the book belongs to
+       * </pre>
+       *
+       * <code>repeated string categories = 7;</code>
+       * @return The count of categories.
+       */
+      public int getCategoriesCount() {
+        return categories_.size();
+      }
+      /**
+       * <pre>
+       * List of categories the book belongs to
+       * </pre>
+       *
+       * <code>repeated string categories = 7;</code>
+       * @param index The index of the element to return.
+       * @return The categories at the given index.
+       */
+      public java.lang.String getCategories(int index) {
+        return categories_.get(index);
+      }
+      /**
+       * <pre>
+       * List of categories the book belongs to
+       * </pre>
+       *
+       * <code>repeated string categories = 7;</code>
+       * @param index The index of the value to return.
+       * @return The bytes of the categories at the given index.
+       */
+      public com.google.protobuf.ByteString
+          getCategoriesBytes(int index) {
+        return categories_.getByteString(index);
+      }
+      /**
+       * <pre>
+       * List of categories the book belongs to
+       * </pre>
+       *
+       * <code>repeated string categories = 7;</code>
+       * @param index The index to set the value at.
+       * @param value The categories to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCategories(
+          int index, java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureCategoriesIsMutable();
+        categories_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * List of categories the book belongs to
+       * </pre>
+       *
+       * <code>repeated string categories = 7;</code>
+       * @param value The categories to add.
+       * @return This builder for chaining.
+       */
+      public Builder addCategories(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureCategoriesIsMutable();
+        categories_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * List of categories the book belongs to
+       * </pre>
+       *
+       * <code>repeated string categories = 7;</code>
+       * @param values The categories to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllCategories(
+          java.lang.Iterable<java.lang.String> values) {
+        ensureCategoriesIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, categories_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * List of categories the book belongs to
+       * </pre>
+       *
+       * <code>repeated string categories = 7;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearCategories() {
+        categories_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * List of categories the book belongs to
+       * </pre>
+       *
+       * <code>repeated string categories = 7;</code>
+       * @param value The bytes of the categories to add.
+       * @return This builder for chaining.
+       */
+      public Builder addCategoriesBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        ensureCategoriesIsMutable();
+        categories_.add(value);
+        onChanged();
+        return this;
+      }
+
       private java.lang.Object language_ = "";
       /**
        * <pre>
        * The language of the book
        * </pre>
        *
-       * <code>string language = 6;</code>
+       * <code>string language = 8;</code>
        * @return The language.
        */
       public java.lang.String getLanguage() {
@@ -1655,7 +2212,7 @@ public final class Event {
        * The language of the book
        * </pre>
        *
-       * <code>string language = 6;</code>
+       * <code>string language = 8;</code>
        * @return The bytes for language.
        */
       public com.google.protobuf.ByteString
@@ -1676,7 +2233,7 @@ public final class Event {
        * The language of the book
        * </pre>
        *
-       * <code>string language = 6;</code>
+       * <code>string language = 8;</code>
        * @param value The language to set.
        * @return This builder for chaining.
        */
@@ -1695,7 +2252,7 @@ public final class Event {
        * The language of the book
        * </pre>
        *
-       * <code>string language = 6;</code>
+       * <code>string language = 8;</code>
        * @return This builder for chaining.
        */
       public Builder clearLanguage() {
@@ -1709,7 +2266,7 @@ public final class Event {
        * The language of the book
        * </pre>
        *
-       * <code>string language = 6;</code>
+       * <code>string language = 8;</code>
        * @param value The bytes for language to set.
        * @return This builder for chaining.
        */
@@ -1725,118 +2282,224 @@ public final class Event {
         return this;
       }
 
-      private double avgRatings_ ;
+      private java.lang.Object description_ = "";
       /**
        * <pre>
-       * The average ratings of the book
+       * The description of the book
        * </pre>
        *
-       * <code>double avg_ratings = 7;</code>
-       * @return The avgRatings.
+       * <code>string description = 9;</code>
+       * @return The description.
        */
-      @java.lang.Override
-      public double getAvgRatings() {
-        return avgRatings_;
+      public java.lang.String getDescription() {
+        java.lang.Object ref = description_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          description_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
       }
       /**
        * <pre>
-       * The average ratings of the book
+       * The description of the book
        * </pre>
        *
-       * <code>double avg_ratings = 7;</code>
-       * @param value The avgRatings to set.
+       * <code>string description = 9;</code>
+       * @return The bytes for description.
+       */
+      public com.google.protobuf.ByteString
+          getDescriptionBytes() {
+        java.lang.Object ref = description_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          description_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * The description of the book
+       * </pre>
+       *
+       * <code>string description = 9;</code>
+       * @param value The description to set.
        * @return This builder for chaining.
        */
-      public Builder setAvgRatings(double value) {
-        
-        avgRatings_ = value;
+      public Builder setDescription(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        description_ = value;
         onChanged();
         return this;
       }
       /**
        * <pre>
-       * The average ratings of the book
+       * The description of the book
        * </pre>
        *
-       * <code>double avg_ratings = 7;</code>
+       * <code>string description = 9;</code>
        * @return This builder for chaining.
        */
-      public Builder clearAvgRatings() {
+      public Builder clearDescription() {
         
-        avgRatings_ = 0D;
+        description_ = getDefaultInstance().getDescription();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The description of the book
+       * </pre>
+       *
+       * <code>string description = 9;</code>
+       * @param value The bytes for description to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDescriptionBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        description_ = value;
         onChanged();
         return this;
       }
 
-      private long ratingsCount_ ;
+      private java.lang.Object image_ = "";
       /**
        * <pre>
-       * The count of the ratings
+       * The image of the book (Base64 or URL)
        * </pre>
        *
-       * <code>int64 ratings_count = 8;</code>
-       * @return The ratingsCount.
+       * <code>string image = 10;</code>
+       * @return The image.
        */
-      @java.lang.Override
-      public long getRatingsCount() {
-        return ratingsCount_;
+      public java.lang.String getImage() {
+        java.lang.Object ref = image_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          image_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
       }
       /**
        * <pre>
-       * The count of the ratings
+       * The image of the book (Base64 or URL)
        * </pre>
        *
-       * <code>int64 ratings_count = 8;</code>
-       * @param value The ratingsCount to set.
+       * <code>string image = 10;</code>
+       * @return The bytes for image.
+       */
+      public com.google.protobuf.ByteString
+          getImageBytes() {
+        java.lang.Object ref = image_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          image_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * The image of the book (Base64 or URL)
+       * </pre>
+       *
+       * <code>string image = 10;</code>
+       * @param value The image to set.
        * @return This builder for chaining.
        */
-      public Builder setRatingsCount(long value) {
-        
-        ratingsCount_ = value;
+      public Builder setImage(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        image_ = value;
         onChanged();
         return this;
       }
       /**
        * <pre>
-       * The count of the ratings
+       * The image of the book (Base64 or URL)
        * </pre>
        *
-       * <code>int64 ratings_count = 8;</code>
+       * <code>string image = 10;</code>
        * @return This builder for chaining.
        */
-      public Builder clearRatingsCount() {
+      public Builder clearImage() {
         
-        ratingsCount_ = 0L;
+        image_ = getDefaultInstance().getImage();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The image of the book (Base64 or URL)
+       * </pre>
+       *
+       * <code>string image = 10;</code>
+       * @param value The bytes for image to set.
+       * @return This builder for chaining.
+       */
+      public Builder setImageBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        image_ = value;
         onChanged();
         return this;
       }
 
       private com.google.protobuf.Internal.LongList authorIds_ = emptyLongList();
       private void ensureAuthorIdsIsMutable() {
-        if (!((bitField0_ & 0x00000001) != 0)) {
+        if (!((bitField0_ & 0x00000004) != 0)) {
           authorIds_ = mutableCopy(authorIds_);
-          bitField0_ |= 0x00000001;
+          bitField0_ |= 0x00000004;
          }
       }
       /**
        * <pre>
-       * The IDs of the authors
+       * List of author details
        * </pre>
        *
-       * <code>repeated int64 author_ids = 9;</code>
+       * <code>repeated int64 authorIds = 11;</code>
        * @return A list containing the authorIds.
        */
       public java.util.List<java.lang.Long>
           getAuthorIdsList() {
-        return ((bitField0_ & 0x00000001) != 0) ?
+        return ((bitField0_ & 0x00000004) != 0) ?
                  java.util.Collections.unmodifiableList(authorIds_) : authorIds_;
       }
       /**
        * <pre>
-       * The IDs of the authors
+       * List of author details
        * </pre>
        *
-       * <code>repeated int64 author_ids = 9;</code>
+       * <code>repeated int64 authorIds = 11;</code>
        * @return The count of authorIds.
        */
       public int getAuthorIdsCount() {
@@ -1844,10 +2507,10 @@ public final class Event {
       }
       /**
        * <pre>
-       * The IDs of the authors
+       * List of author details
        * </pre>
        *
-       * <code>repeated int64 author_ids = 9;</code>
+       * <code>repeated int64 authorIds = 11;</code>
        * @param index The index of the element to return.
        * @return The authorIds at the given index.
        */
@@ -1856,10 +2519,10 @@ public final class Event {
       }
       /**
        * <pre>
-       * The IDs of the authors
+       * List of author details
        * </pre>
        *
-       * <code>repeated int64 author_ids = 9;</code>
+       * <code>repeated int64 authorIds = 11;</code>
        * @param index The index to set the value at.
        * @param value The authorIds to set.
        * @return This builder for chaining.
@@ -1873,10 +2536,10 @@ public final class Event {
       }
       /**
        * <pre>
-       * The IDs of the authors
+       * List of author details
        * </pre>
        *
-       * <code>repeated int64 author_ids = 9;</code>
+       * <code>repeated int64 authorIds = 11;</code>
        * @param value The authorIds to add.
        * @return This builder for chaining.
        */
@@ -1888,10 +2551,10 @@ public final class Event {
       }
       /**
        * <pre>
-       * The IDs of the authors
+       * List of author details
        * </pre>
        *
-       * <code>repeated int64 author_ids = 9;</code>
+       * <code>repeated int64 authorIds = 11;</code>
        * @param values The authorIds to add.
        * @return This builder for chaining.
        */
@@ -1905,15 +2568,15 @@ public final class Event {
       }
       /**
        * <pre>
-       * The IDs of the authors
+       * List of author details
        * </pre>
        *
-       * <code>repeated int64 author_ids = 9;</code>
+       * <code>repeated int64 authorIds = 11;</code>
        * @return This builder for chaining.
        */
       public Builder clearAuthorIds() {
         authorIds_ = emptyLongList();
-        bitField0_ = (bitField0_ & ~0x00000001);
+        bitField0_ = (bitField0_ & ~0x00000004);
         onChanged();
         return this;
       }
@@ -1985,13 +2648,14 @@ public final class Event {
   static {
     java.lang.String[] descriptorData = {
       "\n\013event.proto\022\031org.ebook_searching.proto" +
-      "\032\037google/protobuf/timestamp.proto\"\317\001\n\014Ad" +
-      "dBookEvent\022\n\n\002id\030\001 \001(\003\022\r\n\005title\030\002 \001(\t\022\r\n" +
-      "\005genre\030\003 \001(\t\0220\n\014published_at\030\004 \001(\0132\032.goo" +
-      "gle.protobuf.Timestamp\022\021\n\tpublisher\030\005 \001(" +
-      "\t\022\020\n\010language\030\006 \001(\t\022\023\n\013avg_ratings\030\007 \001(\001" +
-      "\022\025\n\rratings_count\030\010 \001(\003\022\022\n\nauthor_ids\030\t " +
-      "\003(\003b\006proto3"
+      "\032\037google/protobuf/timestamp.proto\"\360\001\n\014Ad" +
+      "dBookEvent\022\n\n\002id\030\001 \001(\003\022\r\n\005title\030\002 \001(\t\022\016\n" +
+      "\006genres\030\003 \003(\t\0220\n\014published_at\030\004 \001(\0132\032.go" +
+      "ogle.protobuf.Timestamp\022\021\n\tpublisher\030\005 \001" +
+      "(\t\022\023\n\013total_pages\030\006 \001(\005\022\022\n\ncategories\030\007 " +
+      "\003(\t\022\020\n\010language\030\010 \001(\t\022\023\n\013description\030\t \001" +
+      "(\t\022\r\n\005image\030\n \001(\t\022\021\n\tauthorIds\030\013 \003(\003B\036Z\034" +
+      "github.com/tqchu/SharedProtob\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -2003,7 +2667,7 @@ public final class Event {
     internal_static_org_ebook_searching_proto_AddBookEvent_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_ebook_searching_proto_AddBookEvent_descriptor,
-        new java.lang.String[] { "Id", "Title", "Genre", "PublishedAt", "Publisher", "Language", "AvgRatings", "RatingsCount", "AuthorIds", });
+        new java.lang.String[] { "Id", "Title", "Genres", "PublishedAt", "Publisher", "TotalPages", "Categories", "Language", "Description", "Image", "AuthorIds", });
     com.google.protobuf.TimestampProto.getDescriptor();
   }
 

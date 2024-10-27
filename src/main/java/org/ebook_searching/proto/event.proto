@@ -13,8 +13,8 @@ message AddBookEvent {
   // The title of the book
   string title = 2;
 
-  // The genre of the book
-  string genre = 3;
+  // List of genres of the book
+  repeated string genres = 3;
 
   // The date the book was published
   google.protobuf.Timestamp published_at = 4;
@@ -22,15 +22,21 @@ message AddBookEvent {
   // The publisher of the book
   string publisher = 5;
 
+  // Total pages in the book
+  int32 total_pages = 6;
+
+  // List of categories the book belongs to
+  repeated string categories = 7;
+
   // The language of the book
-  string language = 6;
+  string language = 8;
 
-  // The average ratings of the book
-  double avg_ratings = 7;
+  // The description of the book
+  string description = 9;
 
-  // The count of the ratings
-  int64 ratings_count = 8;
+  // The image of the book (Base64 or URL)
+  string image = 10;
 
-  // The IDs of the authors
-  repeated int64 author_ids = 9;
+  // List of author details
+  repeated int64 authorIds = 11;
 }
